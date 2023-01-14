@@ -1,5 +1,6 @@
 "use strict";
 const echo = (arg) => arg;
+//////////////////////////////////
 const isObj = (arg) => {
     return (typeof arg === 'object' && !Array.isArray(arg) && arg !== null);
 };
@@ -8,6 +9,7 @@ console.log(isObj('John'));
 console.log(isObj([1, 2, 3]));
 console.log(isObj({ name: 'John' }));
 console.log(isObj(null));
+///////////////////////////////////
 const isTrue = (arg) => {
     if (Array.isArray(arg) && !arg.length) {
         return { arg, is: false };
@@ -46,6 +48,7 @@ const processUser = (user) => {
 };
 console.log(processUser({ id: 1, name: 'Dave' }));
 //console.log(processUser({ name: 'Dave'}))
+///////////////////////////////////////
 const getUsersProperty = (users, key) => {
     return users.map(user => user[key]);
 };
@@ -97,23 +100,25 @@ const usersArray = [
         }
     },
 ];
-console.log(getUsersProperty(usersArray, "email"));
+console.log(getUsersProperty(usersArray, "address"));
 console.log(getUsersProperty(usersArray, "username"));
-class StateObject {
-    constructor(value) {
-        this.data = value;
-    }
-    get state() {
-        return this.data;
-    }
-    set state(value) {
-        this.data = value;
-    }
-}
-const store = new StateObject("John");
-console.log(store.state);
-store.state = "Dave";
-//store.state = 12
-const myState = new StateObject([15]);
-myState.state = ['Dave', 42, true];
-console.log(myState.state);
+///////////////////////////////////////
+// class StateObject<T> {
+//     private data: T
+//     constructor(value: T) {
+//         this.data = value
+//     }
+//     get state(): T {
+//         return this.data
+//     }
+//     set state(value: T) {
+//         this.data = value
+//     }
+// }
+// const store = new StateObject("John")
+// console.log(store.state)
+// store.state = "Dave"
+// //store.state = 12
+// const myState = new StateObject<(string | number | boolean)[]>([15])
+// myState.state = ['Dave', 42, true]
+// console.log(myState.state)
